@@ -1,6 +1,7 @@
 #include "random.h"
 
 int randomizer(void){
+    srand(time(NULL));
     return (rand() % (370098));
 }
 
