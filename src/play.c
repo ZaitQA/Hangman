@@ -89,9 +89,3 @@ int test_char_or_word(char *chosen_word)
     }
     return 0;
 }
-
-int main()
-{
-    test_char_or_word("patrick");
-    return 0;
-}
