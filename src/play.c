@@ -18,11 +18,3 @@ int do_you_want()
         return 0;
     }
 }
-
-
-
-int main()
-{
-    do_you_want();
-    return 0;
-}
