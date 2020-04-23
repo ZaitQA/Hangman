@@ -9,7 +9,6 @@ int main(void){
     start_game();
     chosen_word = "salut";//word_from_file(randomizer());
     len_chosen = 5;//strlen(chosen_word);
-    int len_chosen = strlen(chosen_word);
 
     //launch the game
     int is_ended = 0;

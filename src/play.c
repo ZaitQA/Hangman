@@ -51,7 +51,7 @@ int size_of(char *input){
 }
 
 int verify_win(){
-    for (int i = 0; i < len_chosen; i++){
+    for (int i = 1; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
         if (!letter_tested[pos])
             return 0;
@@ -63,7 +63,9 @@ int current_state(){
     printf("\n   ");
     for (int i = 0; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
-        if (!letter_tested[pos])
+        if (i == 0)
+            printf("\033[32;1m%c\033[0m", chosen_word[i]);
+        else if (!letter_tested[pos])
             printf("\033[32;1m_\033[0m");
         else
             printf("\033[32;1m%c\033[0m", chosen_word[i]);
