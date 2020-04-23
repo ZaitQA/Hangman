@@ -3,6 +3,8 @@
 #include <string.h>
 #include "messages.h"
 #include "play.h"
+#include "dessin.h"
+#include "unistd.h"
 
 //here you can find all the interactions with the player.
 //all letters the player will have tested
@@ -57,9 +59,44 @@ int verify_win(){
     return 1;
 }
 
+void drawing(){
+    switch(tries){
+        case 0:
+            break;
+        case 1:
+            first_step();
+            break;
+        case 2:
+            two_step();
+            break;
+        case 3:
+            three_step();
+            break;
+        case 4:
+            four_step();
+            break;
+        case 5:
+            five_step();
+            break;
+        case 6:
+            six_step();
+            break;
+        case 7:
+            seven_step();
+            break;
+        case 8:
+            eigth_step();
+            break;
+        case 9:
+            nine_step();
+            break;
+    }
+}
+
 //the player will give a character or a word suggestion to try to find the hidden word
 int play_round()
 {
+    drawing();
     char *proposition = calloc(30, sizeof(char));
     suggest();
     fgets(proposition, 50, stdin);
@@ -94,9 +131,14 @@ int play_round()
         false_entry();
         tries += 3;
     }
-    if (tries == 9)
+    if (tries == 9){
+        system("clear");
+        nine_step();
         return game_lost();
+    }
     if (verify_win()){
+        system("clear");
+        drawing();
         return game_won();
     }
     return 0;
