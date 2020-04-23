@@ -1,0 +1,2 @@
+When the chosen_word is given to start_the_game in play.c, the last characters are differents.
+When we re call the fucntion start_the_game in itself, the parameter chosen_word disappear.
