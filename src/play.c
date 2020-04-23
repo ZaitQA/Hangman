@@ -25,7 +25,7 @@ int do_you_want()
 }
 
 //test if the given char is in the hidden word
-int is_in(char *chosen_word, size_t len_w, char test)
+int is_in(char *chosen_word, long len_w, char test)
 {
     for (int i = 0; i < len_w; i++)
     {
@@ -37,6 +37,7 @@ int is_in(char *chosen_word, size_t len_w, char test)
     return 1;
 }
 
+//test if the word gave by the player is the hidden word
 int is_it(char *chosen_word, char *test)
 {
     return strcmp(chosen_word, test);
@@ -45,14 +46,14 @@ int is_it(char *chosen_word, char *test)
 //the player will give a character or a word suggestion to try to find the hidden word
 int test_char_or_word(char *chosen_word)
 {
-    size_t len_w = sizeof(chosen_word);
-    char *proposition = calloc(25, sizeof(char));
+    long len_w = sizeof(chosen_word);
+    char proposition[26];
 
     suggest();
-    scanf("%c", proposition);
-    size_t len_p = sizeof(proposition);
+    scanf("%s", proposition);
+    long len_p = sizeof(proposition);
 
-    if (len_p == 8)
+    if (proposition[1] == '\0')
     {
         if (letter_tested[(int)proposition] == 1)
         {
@@ -72,7 +73,7 @@ int test_char_or_word(char *chosen_word)
         }
     }
 
-    else if (len_p == len_w)
+    else if (proposition[len_w] == '\0')
     {
         if (is_it(chosen_word, proposition) == 0)
         {
@@ -87,5 +88,11 @@ int test_char_or_word(char *chosen_word)
     {
         false_entry();
     }
+    return 0;
+}
+
+int main()
+{
+    test_char_or_word("patrick");
     return 0;
 }
