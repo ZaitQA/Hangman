@@ -59,6 +59,20 @@ int verify_win(){
     return 1;
 }
 
+int current_state(){
+    printf("\n   ");
+    for (int i = 0; i < len_chosen; i++){
+        int pos = chosen_word[i] - 97;
+        if (!letter_tested[pos])
+            printf("\033[32;1m_\033[0m");
+        else
+            printf("\033[32;1m%c\033[0m", chosen_word[i]);
+    }
+    printf("\n\n\n");
+    return 1;
+}
+
+
 void drawing(){
     switch(tries){
         case 0:
@@ -97,6 +111,7 @@ void drawing(){
 int play_round()
 {
     drawing();
+    current_state();
     char *proposition = calloc(30, sizeof(char));
     suggest();
     fgets(proposition, 50, stdin);
@@ -111,11 +126,14 @@ int play_round()
         int pos = proposition[0] - 97;
         if (letter_tested[pos]){
             already_gave();
+            sleep(1);
         }else{
             if (!is_correct(chosen_word, len_chosen, proposition[0])){
                 right_letter();
+                sleep(1);
             }else{
                 wrong_letter();
+                sleep(1);
                 tries++;
             }
             letter_tested[pos] = 1;
@@ -125,20 +143,24 @@ int play_round()
             return game_won();
         }else{
             wrong_word();
+            sleep(1);
             tries += 3;
         }
     }else{
         false_entry();
+        sleep(1);
         tries += 3;
     }
     if (tries == 9){
         system("clear");
         nine_step();
+        current_state();
         return game_lost();
     }
     if (verify_win()){
         system("clear");
         drawing();
+        current_state();
         return game_won();
     }
     return 0;

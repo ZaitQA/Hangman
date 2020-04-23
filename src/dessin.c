@@ -11,7 +11,7 @@ void nine_step(){
     printf("       |            / \\\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void eigth_step(){
@@ -25,7 +25,7 @@ void eigth_step(){
     printf("       |            /\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void seven_step(){
@@ -39,7 +39,7 @@ void seven_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void six_step(){
@@ -53,7 +53,7 @@ void six_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void five_step(){
@@ -67,7 +67,7 @@ void five_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void four_step(){
@@ -81,7 +81,7 @@ void four_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void three_step(){
@@ -95,7 +95,7 @@ void three_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void two_step(){
@@ -109,7 +109,7 @@ void two_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }
 
 void first_step(){
@@ -123,5 +123,5 @@ void first_step(){
     printf("       |\n");
     printf("       |\n");
     printf("       |\n");
-    printf("  _____|_____\n");
+    printf("  _____|_____\n\n\n");
 }

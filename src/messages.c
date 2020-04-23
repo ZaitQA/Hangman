@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "messages.h"
+#include "play.h"
 
 //here are all the differente messages that you can find during the game
 //all the interactions, winning or loosing messages, ...
@@ -48,6 +49,6 @@ void false_entry(){
 }
 
 int game_lost(){
-    printf("You lost, sorry!\n");
+    printf("You lost, sorry!\nThe correct word was %s\n", chosen_word);
     return 1;
 }
