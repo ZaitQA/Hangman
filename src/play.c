@@ -2,28 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include "messages.h"
+#include "play.h"
 
 //here you can find all the interactions with the player.
-
-int letter_tested[26] = {0};      //all letters the player will have tested
+//all letters the player will have tested
+int letter_tested[26] = {0};
 short tries = 0;
 
 //do you want to play ?
-int do_you_want(){
-    char *answer = calloc(25, sizeof(char));
+int start_game(){
+
+    //message to know if the user wants to play
     question_playing();
-    scanf("%s", answer);
-    if (strcmp(answer, "yes") == 1){
-        no_play();
-        return 1;
+    char answer[5];
+    fgets(answer, 5, stdin);
+
+    if (!strcmp(answer, "yes")){
+        return no_play();
     }else{
-        yes_play();
-        return 0;
+        return yes_play();
     }
 }
 
 //test if the given char is in the hidden word
-int is_in(char *chosen_word, long len_w, char test){
+int is_correct(char *chosen_word, long len_w, char test){
     for (int i = 0; i < len_w; i++){
         if (chosen_word[i] == test){
             return 0;
@@ -33,7 +35,7 @@ int is_in(char *chosen_word, long len_w, char test){
 }
 
 //test if the word gave by the player is the hidden word
-int is_it(char *chosen_word, char *test){
+int is_found(char *chosen_word, char *test){
     return strcmp(chosen_word, test);
 }
 
@@ -46,45 +48,56 @@ int size_of(char *input){
     return i;
 }
 
+int verify_win(){
+    for (int i = 0; i < len_chosen; i++){
+        int pos = chosen_word[i] - 97;
+        if (!letter_tested[pos])
+            return 0;
+    }
+    return 1;
+}
+
 //the player will give a character or a word suggestion to try to find the hidden word
-void start_the_game(char *chosen_word)
+int play_round()
 {
-    printf("%s\n", chosen_word);
-    char proposition[26];
+    char *proposition = calloc(30, sizeof(char));
     suggest();
-    scanf("%s", proposition);
+    fgets(proposition, 50, stdin);
     int len_p = size_of(proposition);
-    int len_input = size_of(chosen_word);
-    printf("%d\n", len_input);
-    printf("%s\n", chosen_word);
+    for (int i = 0; i < len_p; i++){
+        if (proposition[i] == '\n'){
+            proposition[i] = '\0';
+            len_p--;
+        }
+    }
     if (len_p == 1){
         int pos = proposition[0] - 97;
-        if (letter_tested[pos] == 1){
+        if (letter_tested[pos]){
             already_gave();
-            start_the_game(chosen_word);
-        }
-        else{
-            if (is_in(chosen_word, len_input, proposition[0]) == 0){
+        }else{
+            if (!is_correct(chosen_word, len_chosen, proposition[0])){
                 right_letter();
-                start_the_game(chosen_word);
             }else{
                 wrong_letter();
                 tries++;
-                start_the_game(chosen_word);
             }
             letter_tested[pos] = 1;
         }
-    }else if (len_p == len_input){
-        if (is_it(chosen_word, proposition) == 0){
-            find_word();
+    }else if (len_p == len_chosen){
+        if (!is_found(chosen_word, proposition)){
+            return game_won();
         }else{
             wrong_word();
             tries += 3;
-            start_the_game(chosen_word);
         }
     }else{
         false_entry();
         tries += 3;
-        start_the_game(chosen_word);
     }
+    if (tries == 9)
+        return game_lost();
+    if (verify_win()){
+        return game_won();
+    }
+    return 0;
 }

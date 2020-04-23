@@ -1,5 +1,7 @@
 #pragma once
 
-int do_you_want();
+char *chosen_word;
+int len_chosen;
 
-void start_the_game(char *chosen_word);
+int start_game();
+int play_round();
