@@ -13,7 +13,7 @@ void no_play(){
 }
 
 void yes_play(){
-    printf("Ok let's start the game!");
+    printf("Ok let's start the game!\n");
 }
 
 void suggest(){
@@ -22,30 +22,30 @@ void suggest(){
 
 void already_gave()
 {
-    printf("You already tried this letter.");
+    printf("You already tried this letter.\n");
 }
 
 void right_letter()
 {
-    printf("Well done! You gave a letter which is in the hidden word!");
+    printf("Well done! You gave a letter which is in the hidden word!\n");
 }
 
 void wrong_letter()
 {
-    printf("Damn! You miss it this time.");    //maybe add the number of try it remains ??
+    printf("WRONG! You miss it this time.\n");    //maybe add the number of try it remains ??
 }
 
 void find_word()
 {
-    printf("Wongratulations! You find the hidden word!");
+    printf("Wongratulations! You find the hidden word!\n");
 }
 
 void wrong_word()
 {
-    printf("Oups! That's not the hidden word! You fail!");
+    printf("Oups! That's not the hidden word! You fail!\n");
 }
 
 void false_entry()
 {
-    printf("what's that?!");
+    printf("what's that?!\n");
 }
