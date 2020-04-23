@@ -43,6 +43,32 @@ int is_it(char *chosen_word, char *test)
     return strcmp(chosen_word, test);
 }
 
+/*//delete all white space in the input
+char *get_input(char *input)
+{
+    char *real_w = malloc(sizeof(char));
+    int i = 0;
+    while (input[i])
+    {
+        real_w[i] = input[i];
+        real_w = realloc(real_w, sizeof(real_w) + 1);
+        i++;
+    }
+    real_w[i] = '\0';
+    return real_w;
+}*/
+
+//calcul real size of the input
+int size_of_input(char *input)
+{
+    int i = 0;
+    while (input[i])
+    {
+        i++;
+    }
+    return i;
+}
+
 //the player will give a character or a word suggestion to try to find the hidden word
 int test_char_or_word(char *chosen_word)
 {
@@ -51,11 +77,12 @@ int test_char_or_word(char *chosen_word)
 
     suggest();
     scanf("%s", proposition);
-    long len_p = sizeof(proposition);
-
-    if (proposition[1] == '\0')
+    int len_p = size_of_input(proposition);
+    int len_input = size_of_input(chosen_word);
+    if (len_p == 1)
     {
-        if (letter_tested[(int)proposition] == 1)
+        int pos = proposition[0] - 97;
+        if (letter_tested[pos] == 1)
         {
             already_gave();
         }
@@ -69,11 +96,11 @@ int test_char_or_word(char *chosen_word)
             {
                 wrong_letter();
             }
-            letter_tested[(int)proposition] = 1;
+            letter_tested[pos] = 1;
         }
     }
 
-    else if (proposition[len_w] == '\0')
+    else if (len_p == len_input)
     {
         if (is_it(chosen_word, proposition) == 0)
         {
