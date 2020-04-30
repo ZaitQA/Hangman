@@ -7,13 +7,14 @@
 int main(void){
     system("clear");
     start_game();
-    chosen_word = "salut";//word_from_file(randomizer());
-    len_chosen = 5;//strlen(chosen_word);
+    char *chosen_word = calloc(30, sizeof(char));
+    word_from_file(randomizer(), chosen_word);
+    int len_chosen = strlen(chosen_word);
 
     //launch the game
     int is_ended = 0;
     while (!is_ended){
-        is_ended = play_round();
+        is_ended = play_round(chosen_word, len_chosen);
         if (!is_ended)
             system("clear");
     }

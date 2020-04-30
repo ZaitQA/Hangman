@@ -5,4 +5,4 @@
 #include <time.h>
 
 int randomizer(void);
-char *word_from_file(int numb);
+char *word_from_file(int numb, char *chosen_word);

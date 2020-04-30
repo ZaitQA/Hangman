@@ -50,7 +50,7 @@ int size_of(char *input){
     return i;
 }
 
-int verify_win(){
+int verify_win(char *chosen_word, int len_chosen){
     for (int i = 1; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
         if (!letter_tested[pos])
@@ -59,14 +59,14 @@ int verify_win(){
     return 1;
 }
 
-int current_state(){
+int current_state(char *chosen_word, int len_chosen){
     printf("\n   ");
     for (int i = 0; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
         if (i == 0)
             printf("\033[32;1m%c\033[0m", chosen_word[i]);
         else if (!letter_tested[pos])
-            printf("\033[32;1m_\033[0m");
+            printf("\033[32;1m-\033[0m");
         else
             printf("\033[32;1m%c\033[0m", chosen_word[i]);
     }
@@ -110,13 +110,14 @@ void drawing(){
 }
 
 //the player will give a character or a word suggestion to try to find the hidden word
-int play_round()
+int play_round(char *chosen_word, int len_chosen)
 {
     drawing();
-    current_state();
+    current_state(chosen_word, len_chosen);
     char *proposition = calloc(30, sizeof(char));
     suggest();
     fgets(proposition, 50, stdin);
+
     int len_p = size_of(proposition);
     for (int i = 0; i < len_p; i++){
         if (proposition[i] == '\n'){
@@ -156,13 +157,13 @@ int play_round()
     if (tries == 9){
         system("clear");
         nine_step();
-        current_state();
-        return game_lost();
+        current_state(chosen_word, len_chosen);
+        return game_lost(chosen_word);
     }
-    if (verify_win()){
+    if (verify_win(chosen_word, len_chosen)){
         system("clear");
         drawing();
-        current_state();
+        current_state(chosen_word, len_chosen);
         return game_won();
     }
     return 0;

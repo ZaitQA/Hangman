@@ -48,7 +48,7 @@ void false_entry(){
     printf("what's that?!\n");
 }
 
-int game_lost(){
-    printf("You lost, sorry!\nThe correct word was %s\n", chosen_word);
+int game_lost(char *chosen_word){
+    printf("You lost, sorry! The word was %s\n", chosen_word);
     return 1;
 }

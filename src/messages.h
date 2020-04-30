@@ -10,4 +10,4 @@ void wrong_letter();
 int game_won();
 void wrong_word();
 void false_entry();
-int game_lost();
+int game_lost(char *chosen_word);
