@@ -11,12 +11,16 @@ int start_game(){
 
     //message to know if the user wants to play
     question_playing();
-    char answer[5];
-    fgets(answer, 5, stdin);
-
-    if (!strcmp(answer, "yes")){
+    char answer[50];
+    fgets(answer, 50, stdin);
+    size_t len = strlen(answer);
+    for (size_t i = 0; i < len; i++) {
+        if (answer[i] == '\n')
+            answer[i] = '\0';
+    }
+    if (strcmp(answer, "yes") != 0){
         return no_play();
-    }else{
+    } else {
         return yes_play();
     }
 }
@@ -73,6 +77,7 @@ int current_state(char *chosen_word, int len_chosen){
 void drawing(){
     switch(tries){
         case 0:
+            zero_step();
             break;
         case 1:
             first_step();

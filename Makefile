@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wextra -Wall -pedantic -std=c99 -g -lcurl
+CFLAGS = -pedantic -std=c99 -lcurl
 SRC = src/*.c
 
 all:

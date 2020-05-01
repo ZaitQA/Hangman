@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+void zero_step();
 void first_step();
 void two_step();
 void three_step();

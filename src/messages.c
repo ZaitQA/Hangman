@@ -22,15 +22,15 @@ void suggest(){
 }
 
 void already_gave(){
-    printf("You already tried this letter.\n");
+    printf("\033[01;33mYou already tried this letter.\n\033[0m");
 }
 
 void right_letter(){
-    printf("Well done! You gave a letter which is in the hidden word!\n");
+    printf("\033[01;32mWELL DONE! You gave a letter which is in the hidden word!\n\033[0m");
 }
 
 void wrong_letter(){
-    printf("WRONG! You miss it this time.\n");    //maybe add the number of try it remains ??
+    printf("\033[01;31mWRONG! You miss it this time.\n\033[0m");
 }
 
 int game_won(char *definition){
@@ -42,16 +42,24 @@ int game_won(char *definition){
 }
 
 void wrong_word(){
-    printf("Oups! That's not the hidden word! You fail!\n");
+    printf("\033[01;31mOups! That's not the hidden word! You fail!\n\033[0m");
 }
 
 void false_entry(){
-    printf("what's that?!\n");
+    printf("\033[01;31mwhat's that?!\n\033[0m");
+}
+
+char *upper_word(char *word){
+    size_t len = strlen(word);
+    for (size_t i = 0; i < len; i++) {
+        word[i] = toupper(word[i]);
+    }
+    return word;
 }
 
 int game_lost(char *chosen_word, char *definition){
-    printf("\033[01;31mYou lost, sorry! The word was %s\n\033[0m", chosen_word);
+    printf("\033[01;31mYou lost, sorry! The word was %s\n\033[0m", upper_word(chosen_word));
     printf("To improve your knowledges, I found the definition for you:\n");
-    printf("\033[01;35m%s\n\033[0m", definition);
+    printf("\033[01;36m%s\n\033[0m", definition);
     return 1;
 }

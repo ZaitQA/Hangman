@@ -6,7 +6,11 @@
 
 int main(void){
     system("clear");
-    start_game();
+    int is_playing = start_game();
+    if (is_playing)
+        return 0;
+    sleep(1);
+    system("clear");
     char *chosen_word = calloc(30, sizeof(char));
     word_from_file(randomizer(), chosen_word);
     int len_chosen = strlen(chosen_word);

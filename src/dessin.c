@@ -125,3 +125,7 @@ void first_step(){
     printf("       |\n");
     printf("  _____|_____\n\n\n");
 }
+
+void zero_step(){
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}

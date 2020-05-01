@@ -1,4 +1,5 @@
 #pragma once
+#include <ctype.h>
 #include "play.h"
 
 void question_playing();
