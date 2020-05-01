@@ -34,7 +34,7 @@ void wrong_letter(){
 }
 
 int game_won(char *definition){
-    printf("Congratulations! You find the hidden word!\n");
+    printf("\033[01;32mCongratulations! You find the hidden word!\n\033[0m");
     printf("To improve your knowledges, I found the definition for you:\n");
     printf("%s\n", definition);
 
@@ -50,8 +50,8 @@ void false_entry(){
 }
 
 int game_lost(char *chosen_word, char *definition){
-    printf("You lost, sorry! The word was %s\n", chosen_word);
+    printf("\033[01;31mYou lost, sorry! The word was %s\n\033[0m", chosen_word);
     printf("To improve your knowledges, I found the definition for you:\n");
-    printf("%s\n", definition);
+    printf("\033[01;35m%s\n\033[0m", definition);
     return 1;
 }

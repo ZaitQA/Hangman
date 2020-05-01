@@ -3,11 +3,11 @@
 
 int randomizer(void){
     srand(time(NULL));
-    return (rand() % (370098));
+    return (rand() % (25322));
 }
 
 char *word_from_file(int numb, char *chosen_word){
-    FILE *file = fopen("src/words_alpha.txt", "r");
+    FILE *file = fopen("src/popular.txt", "r");
 
     //See if the file could be opened
     if (!file){

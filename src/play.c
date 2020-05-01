@@ -59,11 +59,11 @@ int current_state(char *chosen_word, int len_chosen){
     for (int i = 0; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
         if (i == 0)
-            printf("\033[32;1m%c\033[0m", chosen_word[i]);
+            printf("\033[01;32m%c\033[0m", chosen_word[i]);
         else if (!letter_tested[pos])
-            printf("\033[32;1m-\033[0m");
+            printf("\033[01;33m-\033[0m");
         else
-            printf("\033[32;1m%c\033[0m", chosen_word[i]);
+            printf("\033[01;32m%c\033[0m", chosen_word[i]);
     }
     printf("\n\n\n");
     return 1;
