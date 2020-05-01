@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "messages.h"
-#include "play.h"
 
 //here are all the differente messages that you can find during the game
 //all the interactions, winning or loosing messages, ...
@@ -35,8 +33,11 @@ void wrong_letter(){
     printf("WRONG! You miss it this time.\n");    //maybe add the number of try it remains ??
 }
 
-int game_won(){
+int game_won(char *definition){
     printf("Congratulations! You find the hidden word!\n");
+    printf("To improve your knowledges, I found the definition for you:\n");
+    printf("%s\n", definition);
+
     return 1;
 }
 
@@ -48,7 +49,9 @@ void false_entry(){
     printf("what's that?!\n");
 }
 
-int game_lost(char *chosen_word){
+int game_lost(char *chosen_word, char *definition){
     printf("You lost, sorry! The word was %s\n", chosen_word);
+    printf("To improve your knowledges, I found the definition for you:\n");
+    printf("%s\n", definition);
     return 1;
 }

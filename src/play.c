@@ -1,10 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "messages.h"
 #include "play.h"
-#include "dessin.h"
-#include "unistd.h"
+
 
 //here you can find all the interactions with the player.
 //all letters the player will have tested
@@ -143,7 +138,9 @@ int play_round(char *chosen_word, int len_chosen)
         }
     }else if (len_p == len_chosen){
         if (!is_found(chosen_word, proposition)){
-            return game_won();
+            char url[100] = "https://www.collinsdictionary.com/dictionary/english/";
+            strcat(url, chosen_word);
+            return game_won(get_web_page(url));
         }else{
             wrong_word();
             sleep(1);
@@ -154,17 +151,21 @@ int play_round(char *chosen_word, int len_chosen)
         sleep(1);
         tries += 3;
     }
-    if (tries == 9){
+    if (tries >= 9){
         system("clear");
         nine_step();
         current_state(chosen_word, len_chosen);
-        return game_lost(chosen_word);
+        char url[100] = "https://www.collinsdictionary.com/dictionary/english/";
+        strcat(url, chosen_word);
+        return game_lost(chosen_word, get_web_page(url));
     }
     if (verify_win(chosen_word, len_chosen)){
         system("clear");
         drawing();
         current_state(chosen_word, len_chosen);
-        return game_won();
+        char url[100] = "https://www.collinsdictionary.com/dictionary/english/";
+        strcat(url, chosen_word);
+        return game_won(get_web_page(url));
     }
     return 0;
 }
