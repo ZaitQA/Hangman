@@ -36,7 +36,7 @@ void wrong_letter(){
 int game_won(char *definition){
     printf("\033[01;32mCongratulations! You find the hidden word!\n\033[0m");
     printf("To improve your knowledges, I found the definition for you:\n");
-    printf("%s\n", definition);
+    printf("\033[01;36m%s\n\033[0m", definition);
 
     return 1;
 }

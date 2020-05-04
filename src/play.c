@@ -59,7 +59,7 @@ int verify_win(char *chosen_word, int len_chosen){
 }
 
 int current_state(char *chosen_word, int len_chosen){
-    printf("\n   ");
+    printf("\n           ");
     for (int i = 0; i < len_chosen; i++){
         int pos = chosen_word[i] - 97;
         if (i == 0)
